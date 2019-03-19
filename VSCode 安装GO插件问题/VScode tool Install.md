@@ -16,12 +16,12 @@
 
 -----
 >下面以：github.com/sqs/goreturns为例
-1、首先检查%gopath%src/github.com/sqs/goreturns目录下是否有内容
+1. 首先检查%gopath%src/github.com/sqs/goreturns目录下是否有内容
 如果有跳到步骤3，否则继续步骤2
-2、到http://github.com/sqs/goreturns 直接下载zip文件
+2. 到http://github.com/sqs/goreturns 直接下载zip文件
 把该zip内的所有文件，拷贝到%gopath%src/github.com/sqs/goreturns
 注意，有的插件在github中路径与vscode给出的不同，这时你可以自己搜索github网站，找到正确的路径
-3、在%gopath%bin目录（命令行cd到该目录），执行如下命令：
+3. 在%gopath%bin目录（命令行cd到该目录），执行如下命令：
 M:\gopath\bin>go install github.com/sqs/goreturns
 
 ----
