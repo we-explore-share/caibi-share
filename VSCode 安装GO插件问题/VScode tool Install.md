@@ -30,3 +30,6 @@ M:\gopath\bin>go install github.com/sqs/goreturns
 
 ### **3.废话**
  上面的教程本人试了是可以的，如果不可以，那么在群里提出来大家一起去解决，解决了pr一下，以供后面的人参考，谢谢啦。一个好的学习环境，需要大家的努力。Fighting....
+
+
+by CHERISH 2019/03/19
