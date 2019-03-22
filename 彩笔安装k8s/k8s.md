@@ -45,6 +45,7 @@ docker 是容器技术的一种实现。容器技术其实很早就被提出了�
 
 ### docker-compose?
 docker-compose是轻量级编排工具，如果觉得kubernetes重的话，可以了解了解。
+
 这个交给`禹声`之后来分享吧
 
 ### 还有没有其他编排工具？
@@ -52,6 +53,7 @@ docker-compose是轻量级编排工具，如果觉得kubernetes重的话，可�
 * docker-compose
 * docker swarm
 * k8s
+
 为什么没有说过 swarm 呢？因为目前的形式来看 swarm 往下既没有 docker-compose 轻量，往上又没有 k8s 功能强大，目前是处在一个比较尴尬的位置吧。不过阿里云的容器服务目前支持 swarm 和 k8s 两种编排工具。其他厂就不清楚了。
 
 ## k8s
