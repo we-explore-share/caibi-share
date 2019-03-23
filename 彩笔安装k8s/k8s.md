@@ -138,12 +138,18 @@ chown $(id -u):$(id -g) $HOME/.kube/config
 #应用网络插件
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
+kubectl get pods --namespace=kube-system
+
 #设置master也可以部署应用
 kubectl taint nodes --all node-role.kubernetes.io/master-
 #运行nginx
 kubectl run my-app --image=nginx --port=80
 
+kubectl get deployments
+
 #暴露端口
 kubectl expose deployment my-app --type=NodePort
+
+kubectl get services
 ```
 
