@@ -131,6 +131,9 @@ docker load < flanneld-v0.11.0-amd64.docker
 #部署
 kubeadm init --image-repository=mirrorgooglecontainers --pod-network-cidr=10.244.0.0/16
 
+#这个跳过
+kubeadm join --token.....
+
 mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
