@@ -26,6 +26,8 @@ services:
     restart: always
     networks:
       - young
+volumes:
+  nginx_certs:
 networks:
   default:
     external:
