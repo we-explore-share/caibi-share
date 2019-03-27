@@ -9,6 +9,7 @@ services:
       - "443:443"
     volumes:
       - ./docker/nginx_proxy/nginx.conf:/etc/nginx/nginx.conf
+      - /var/run/docker.sock:/tmp/docker.sock:ro
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: 'true'
   letsencrypt:
@@ -17,6 +18,7 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
   redis:
     image: redis:latest
     container_name:  redis
