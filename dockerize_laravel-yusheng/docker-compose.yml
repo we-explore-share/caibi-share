@@ -59,6 +59,5 @@ networks:
     external:
       name: project_default
   nginx_proxy:
-    default:
       external:
         name: nginxproxyservice_default
