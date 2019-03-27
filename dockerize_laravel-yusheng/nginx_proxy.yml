@@ -40,4 +40,4 @@ networks:
       name: nginxproxyservice_default
   young:
     external:
-      name: youngproject_default
+      name: project_default
