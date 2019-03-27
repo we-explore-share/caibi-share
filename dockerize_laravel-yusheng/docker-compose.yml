@@ -4,6 +4,10 @@ services:
     container_name: nginx
     image: nginx:alpine
     restart: always
+    environment:
+      VIRTUAL_HOST: docker.yusheng.tech
+      LETSENCRYPT_HOST: docker.yusheng.tech
+      LETSENCRYPT_EMAIL: itcommunication@shlanyee.com
     volumes:
       - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
     networks:
