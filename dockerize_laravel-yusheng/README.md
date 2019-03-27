@@ -1,5 +1,6 @@
 # 单机Laravel线上docker-compose分享
 
+github: https://github.com/phpandgo-share/caibi-share
 录屏地址：http://www.bilibili.com/video/av47264108  part1
 
 
