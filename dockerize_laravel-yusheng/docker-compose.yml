@@ -8,6 +8,7 @@ services:
       - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
     networks:
       - default
+      - nginx_proxy
   php:
     build: ./docker/php
     container_name: php
