@@ -15,7 +15,8 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: 'true'
-
+    networks:
+      - default
   letsencrypt:
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: letsencrypt
@@ -25,6 +26,8 @@ services:
       - nginx_vhost.d:/etc/nginx/vhost.d
       - nginx_html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - default
   redis:
     image: redis:latest
     container_name:  redis
