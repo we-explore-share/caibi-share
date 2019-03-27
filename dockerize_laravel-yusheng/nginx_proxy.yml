@@ -19,6 +19,7 @@ services:
     volumes:
       - nginx_certs:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - nginx_vhost.d:/etc/nginx/vhost.d
   redis:
     image: redis:latest
     container_name:  redis
@@ -27,6 +28,7 @@ services:
       - young
 volumes:
   nginx_certs:
+  nginx_vhost.d:
 networks:
   default:
     external:
