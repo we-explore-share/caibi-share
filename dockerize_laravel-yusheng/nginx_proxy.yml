@@ -19,7 +19,6 @@ services:
     volumes:
       - nginx_certs:/etc/nginx/certs:rw
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /var/run/docker.sock:/tmp/docker.sock:ro
   redis:
     image: redis:latest
     container_name:  redis
