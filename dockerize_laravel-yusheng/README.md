@@ -4,6 +4,7 @@ github: https://github.com/phpandgo-share/caibi-share
 
 录屏地址： \
 part1: http://www.bilibili.com/video/av47264108  
+part1: http://www.bilibili.com/video/av47519742 
 
 
 part1: \
