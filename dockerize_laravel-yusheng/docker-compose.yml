@@ -1,0 +1,68 @@
+version: '2'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:alpine
+    restart: always
+    environment:
+      VIRTUAL_HOST: docker.yusheng.tech
+      LETSENCRYPT_HOST: docker.yusheng.tech
+      LETSENCRYPT_EMAIL: itcommunication@shlanyee.com
+    volumes:
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - default
+      - nginx_proxy
+  php:
+    build: ./docker/php
+    container_name: php
+    restart: always
+    volumes:
+      - ./:/var/www
+    env_file: ./.env
+    working_dir: /var/www
+    networks:
+      - default
+  php-queue:
+    build: ./docker/php
+    container_name: php-queue
+    restart: always
+    entrypoint:
+      - "php"
+      - "artisan"
+      - "queue:work"
+      - "--tries=3"
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    env_file: ./.env
+    networks:
+      - default
+  php-schedule:
+    build: ./docker/php
+    container_name: php-schedule
+    restart: always
+    entrypoint:
+        - "php"
+        - "schedule_demon.php"
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    env_file: ./.env
+    networks:
+      - default
+  mysql:
+    image: mariadb
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ysuheng123456
+    networks:
+      - default
+networks:
+  default:
+    external:
+      name: project_default
+  nginx_proxy:
+    external:
+      name: nginxproxyservice_default
