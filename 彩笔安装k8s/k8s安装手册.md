@@ -47,7 +47,7 @@ systemctl restart docker
 
 ## 第四步
 
-手动下载两个依赖镜像。 `k8s` 需要的镜像并没有保存在 `dockerhub` 上，而是保存在 `google` 的服务器上。好在使用 `kubeadm` 部署 `k8s` 时可以指定其他的镜像仓库，而 `dockerhub` 上就有一个镜像仓库，里面是 `k8s` 组件的镜像。这个镜像仓库叫做 `mirrorgooglecontainers` 。有两个依赖镜像没有被放到这个镜像仓库中：`coredns/coredns` 和 `coreos/flannel` 。我们先把这两个镜像下载下来。命令如下：
+手动下载两个依赖镜像。 `k8s` 需要的镜像并没有保存在 `dockerhub` 上，而是保存在 `google` 的服务器上。好在使用 `kubeadm` 部署 `k8s` 时可以指定其他的镜像仓库，而 `dockerhub` 上有另一个镜像仓库，里面是 `k8s` 组件的镜像。这个镜像仓库叫做 `mirrorgooglecontainers` 。有两个依赖镜像没有被放到这个镜像仓库中：`coredns/coredns` 和 `coreos/flannel` 。我们先把这两个镜像下载下来。命令如下：
 
 ```bash
 docker pull coredns/coredns:1.2.6
