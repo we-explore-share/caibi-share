@@ -67,7 +67,7 @@ docker load < flanneld-v0.11.0-amd64.docker
 kubeadm init --image-repository=mirrorgooglecontainers --pod-network-cidr=10.244.0.0/16
 ```
 
-这里指定了镜像仓库和 `cidr` ，指定 `cidr` 的原因是因为网络插件 `flannel` 默认就是使用的这个 `cidr` ，不指定的话网络插件 `k8s` 依然跑步起来。接下来就是等待了，如果部署的过程中报错，附录里面有典型报错的解决办法。
+这里指定了镜像仓库和 `cidr` ，指定 `cidr` 的原因是因为网络插件 `flannel` 默认就是使用的这个 `cidr` ，不指定的话 `k8s` 依然跑不起来。接下来就是等待了，如果部署的过程中报错，附录里面有典型报错的解决办法。
 
 ## 第六步
 
