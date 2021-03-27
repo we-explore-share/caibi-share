@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ce:12.1.17-ce.0'
+    restart: always
+    container_name: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'https://gitlab.xxx.cn';gitlab_rails['smtp_enable'] = true;gitlab_rails['smtp_address'] = "smtp.exmail.qq.com";gitlab_rails['smtp_port'] = 465;gitlab_rails['smtp_user_name'] = "noreply@xxx.cn";gitlab_rails['smtp_password'] = "xxxxxxxx";gitlab_rails['smtp_domain'] = "smtp.exmail.qq.com";gitlab_rails['smtp_authentication'] = "login";gitlab_rails['smtp_enable_starttls_auto'] = true;gitlab_rails['smtp_tls'] = true;gitlab_rails['gitlab_email_from'] = 'noreply@xxxxx.cn';gitlab_rails['gitlab_email_display_name'] = 'xxxxxxx有限公司';nginx['listen_https'] = false;nginx['listen_port'] = 80
+        # Add any other gitlab.rb configuration here, each on its own line
+    volumes:
+      - './config:/etc/gitlab'
+      - './logs:/var/log/gitlab'
+      - './data:/var/opt/gitlab'
+    ports:
+      - '22:22'
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gitlab.rule=Host(`gitlab.xxx.cn`)"
+      - "traefik.http.routers.gitlab.tls.certresolver=default"
+      - "traefik.http.services.gitlab.loadbalancer.server.port=80"
+      - "traefik.http.routers.gitlab.service=gitlab"
+
+      # - "traefik.tcp.routers.gitlab1.rule=HostSNI(`*`)"
+      # - "traefik.tcp.routers.gitlab1.entrypoints=git"
+      # - "traefik.tcp.services.gitlab1.loadbalancer.server.port=22"
+      # - "traefik.tcp.routers.gitlab1.service=gitlab"
+    networks:
+      - traefik
+networks:
+  traefik:
+    external:
+      name: traefik_traefik
