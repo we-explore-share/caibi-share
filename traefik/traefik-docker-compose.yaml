@@ -1,0 +1,33 @@
+version: "3.3"
+
+services:
+
+  traefik:
+    image: "traefik:v2.4.5"
+    container_name: "traefik"
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.default.acme.httpchallenge=true"
+      - "--certificatesresolvers.default.acme.httpchallenge.entrypoint=web"
+        #- "--certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.default.acme.email=xxxx@xxx.com"
+      - "--api.dashboard=true"
+      - "--certificatesresolvers.default.acme.storage=/letsencrypt/acme.json"
+      - "--accesslog=true"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./letsencrypt:/letsencrypt"
+    networks:
+      - traefik
+networks:
+  traefik:
+    driver: bridge
